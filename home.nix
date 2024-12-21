@@ -5,7 +5,7 @@
   # manage.
   home.username = "zkl10";
   home.homeDirectory = "/Users/zkl10";
-  
+
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -32,12 +32,14 @@
     # gcc
     (
       let
-        fenix = import (fetchTarball {
-          url = "https://github.com/nix-community/fenix/archive/main.tar.gz";
-          sha256 = "sha256:19g568qm5dpa2whinv36q1wbpza0ivcb01vdm59ixqjy6n2k21wb";
-        }) { 
-          system = pkgs.system;
-        };
+        fenix = import
+          (fetchTarball {
+            url = "https://github.com/nix-community/fenix/archive/main.tar.gz";
+            sha256 = "sha256:19g568qm5dpa2whinv36q1wbpza0ivcb01vdm59ixqjy6n2k21wb";
+          })
+          {
+            system = pkgs.system;
+          };
       in
       fenix.stable.toolchain
     )
