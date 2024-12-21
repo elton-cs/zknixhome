@@ -4,7 +4,7 @@
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "zkl10";
-  home.homeDirectory = "/home/zkl10";
+  home.homeDirectory = "/Users/zkl10";
   
 
   # This value determines the Home Manager release that your configuration is
@@ -32,7 +32,12 @@
     # gcc
     (
       let
-        fenix = import (fetchTarball "https://github.com/nix-community/fenix/archive/main.tar.gz") { };
+        fenix = import (fetchTarball {
+          url = "https://github.com/nix-community/fenix/archive/main.tar.gz";
+          sha256 = "sha256:19g568qm5dpa2whinv36q1wbpza0ivcb01vdm59ixqjy6n2k21wb";
+        }) { 
+          system = pkgs.system;
+        };
       in
       fenix.stable.toolchain
     )
